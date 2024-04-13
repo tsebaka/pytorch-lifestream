@@ -41,7 +41,7 @@ pip install pytorch-lifestream
 sudo apt install python3.8 python3-venv
 pip3 install pipenv
 
-pipenv sync  --dev # install packages exactly as specified in Pipfile.lock
+pipenv sync --dev # install packages exactly as specified in Pipfile.lock
 pipenv shell
 pytest
 
