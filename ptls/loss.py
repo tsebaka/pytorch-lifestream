@@ -1,8 +1,8 @@
+import numpy as np
 import torch
 import torch.nn.functional as F
-from torch import nn
-import numpy as np
 from ptls.data_load.padded_batch import PaddedBatch
+from torch import nn
 
 
 def cross_entropy(pred, soft_targets):
@@ -27,6 +27,7 @@ def mape_metric(pred, actual):
     eps = 1
     device = pred.device
     return torch.mean((actual.to(device) - pred).abs() / (actual.to(device).abs() + eps))
+
 
 def r_squared(pred, actual):
     device = pred.device
@@ -86,6 +87,7 @@ class MultiLoss(nn.Module):
             loss = weight * criterion(pred, true) + loss
 
         return loss
+
 
 class TransactionSumLoss(nn.Module):
     def __init__(self, n_variables_to_predict):
